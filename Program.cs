@@ -1,45 +1,67 @@
 ﻿using System;
 
-namespace Metotlar
+namespace ClassMetotDemo
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Urun urun1 = new Urun();
-            urun1.Adi = "Elma";
-            urun1.Fiyati = 15;
-            urun1.Aciklama = "Amasya Elmasi";
+            Musteri musteri1 = new Musteri();
+            musteri1.MusteriId = 01;
+            musteri1.MusteriName = "Feyzullah";
+            musteri1.MusteriSurname = "BAKTEMUR";
+            musteri1.MusteriCity = "Gaziantep";
 
-            Urun urun2 = new Urun();
-            urun2.Adi = "Karpuz";
-            urun2.Fiyati = 80;
-            urun2.Aciklama = "Diyarbakır karpuzu";
+            Musteri musteri2 = new Musteri();
+            musteri2.MusteriId = 02;
+            musteri2.MusteriName = "Busra";
+            musteri2.MusteriSurname = "POLAT";
+            musteri2.MusteriCity = "Angara";
 
-            Urun[] urunler = new Urun[] { urun1, urun2 };
+            Musteri[] myMusteri = new Musteri[] { musteri1, musteri2 };
 
-            foreach (Urun urun in urunler)
+            Console.WriteLine();
+
+            foreach (var yaz in myMusteri)
             {
-                Console.WriteLine(urun.Adi);
-                Console.WriteLine(urun.Fiyati);
-                Console.WriteLine(urun.Aciklama);
-                Console.WriteLine("---------------------");
+                Console.WriteLine("-----Custormers------");
 
+                Console.WriteLine("Customers 's ID : " + yaz.MusteriId);
+                Console.WriteLine(yaz.MusteriName);
+                Console.WriteLine(yaz.MusteriSurname);
+                Console.WriteLine(yaz.MusteriCity);
+                Console.WriteLine("&&&&&&&&&&&&&&&&\n");
 
             }
+            Console.WriteLine("----------customers-----------");
+            for (int i = 0; i < myMusteri.Length; i++)
+            {
+                Console.WriteLine("Customers 's ID:" + myMusteri[i].MusteriId);
+                Console.WriteLine(myMusteri[i].MusteriName);
+                Console.WriteLine(myMusteri[i].MusteriSurname);
+                Console.WriteLine(myMusteri[i].MusteriCity);
 
-            Console.WriteLine("------------Metotlar--------------");
+                Console.WriteLine("&&&&&&&&&&&\n");
+            }
 
-            SepetManager sepetManager = new SepetManager();
-            sepetManager.Ekle(urun1);
-            sepetManager.Ekle(urun2);
-            
-            sepetManager.Ekle2("Armut", "Yesil armut", 12,15);
-            sepetManager.Ekle2("Elma", "Yesil elma", 12,4);
-            sepetManager.Ekle2("Karpuz", "Diyarbakır karpuzu", 12,7);
-        }
+
+            // adding customers
+            {
+                MusteriManager musterimanager2 = new MusteriManager(); 
+
+                musterimanager2.Add(musteri1);
+                musterimanager2.Add(musteri2);
+            }
+
+            // customers deleted
+            {
+                MusteriManager musterimanager2 = new MusteriManager();
+                musterimanager2.Del(musteri1);
+                musterimanager2.Del(musteri2);
+                Console.ReadLine();
+            }
+        
+      
+       }    
     }
 }
-
-
-// dont repeat yourself - DRY - Clean Code - Best Practice
